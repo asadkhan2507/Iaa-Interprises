@@ -6,12 +6,15 @@ import { Button } from "@/components/ui/button";
 import { motion, useScroll, useSpring } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 
+import Image from "next/image";
+
 const services = [
   {
     icon: Building2,
     title: "Construction Services",
     desc: "Complete commercial and industrial construction from foundation to finish for corporate and government clients.",
     benefits: ["Turnkey project delivery", "Certified engineering team", "Quality materials sourcing", "Regulatory compliance"],
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
     accent: "#232A49",
   },
   {
@@ -19,6 +22,7 @@ const services = [
     title: "Renovation Services",
     desc: "Transform existing spaces with modern renovation solutions — specializing in banks, offices, and government buildings.",
     benefits: ["Minimal operational disruption", "Modern design integration", "Cost-effective solutions", "Timeline adherence"],
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     accent: "#4C4E64",
   },
   {
@@ -26,6 +30,7 @@ const services = [
     title: "Interior Fitout",
     desc: "Professional interior fitout services for corporate offices, retail spaces, and institutional buildings.",
     benefits: ["Custom design solutions", "Premium finishes", "Ergonomic planning", "Brand-aligned interiors"],
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
     accent: "#DF6D5C",
   },
   {
@@ -33,6 +38,7 @@ const services = [
     title: "Office Renovation",
     desc: "Specialized office renovation for banks, corporate HQs, and commercial offices across Pakistan.",
     benefits: ["Space optimization", "IT infrastructure integration", "Modern aesthetics", "Safety compliance"],
+    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=80",
     accent: "#232A49",
   },
   {
@@ -40,6 +46,7 @@ const services = [
     title: "Commercial Construction",
     desc: "Large-scale commercial construction for retail chains, industrial facilities, and mixed-use developments.",
     benefits: ["Scalable solutions", "Industrial expertise", "Project management", "Budget optimization"],
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     accent: "#4C4E64",
   },
   {
@@ -47,6 +54,7 @@ const services = [
     title: "Supply Chain Services",
     desc: "Reliable supply chain management for construction materials, equipment, and specialized resources.",
     benefits: ["Bulk procurement", "Quality assurance", "Timely delivery", "Cost-effective sourcing"],
+    image: "https://images.unsplash.com/photo-1580674684081-77625272a731?auto=format&fit=crop&w=1200&q=80",
     accent: "#DF6D5C",
   },
   {
@@ -54,8 +62,36 @@ const services = [
     title: "Maintenance Services",
     desc: "Ongoing maintenance contracts for corporate buildings, banks, and government facilities.",
     benefits: ["Preventive maintenance", "24/7 emergency support", "Annual contracts", "Dedicated teams"],
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
     accent: "#7F8087",
   },
+];
+
+const pastProjects = [
+  {
+    title: "National Bank of Pakistan",
+    category: "Renovation",
+    description: "Complete interior and structural renovation of multiple flagship branches across the region.",
+    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Pakistan Navy Facility",
+    category: "Construction",
+    description: "Development of advanced training and residential infrastructure adhering to strict military standards.",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "Pak Suzuki Assembly Unit",
+    category: "Supply Chain & Infrastructure",
+    description: "Material supply and logistical support for the expansion of manufacturing facilities.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    title: "NADRA Regional Center",
+    category: "Turnkey Renovation",
+    description: "Fast-track execution of public-facing operational centers designed for high footfall efficiency.",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+  }
 ];
 
 const processSteps = [
@@ -87,14 +123,25 @@ export default function ServicesPage() {
       <motion.div className="scroll-progress" style={{ scaleX }} />
 
       {/* Hero */}
-      <section className="gradient-hero py-24 relative overflow-hidden">
+      <section className="gradient-hero py-32 relative overflow-hidden flex items-center min-h-[60vh]">
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80" 
+            alt="Corporate Infrastructure Services" 
+            fill
+            className="w-full h-full object-cover opacity-[0.15] mix-blend-overlay" 
+            priority 
+            unoptimized
+          />
+        </div>
+        
         <motion.div
-          className="absolute -top-20 -left-20 w-96 h-96 rounded-full opacity-[0.04]"
+          className="absolute -top-20 -left-20 w-96 h-96 rounded-full opacity-[0.04] pointer-events-none"
           style={{ background: "hsl(8 67% 62%)" }}
           animate={{ scale: [1, 1.12, 1], rotate: [0, 15, 0] }}
           transition={{ duration: 8, repeat: Infinity }}
         />
-        <div className="container mx-auto px-4 text-center relative">
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,54 +177,115 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-secondary">
+      {/* Detailed Portfolio Services Section */}
+      <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <SectionHeading
             label="What We Offer"
-            title="7 Core Services"
-            description="From construction to supply chain — every service engineered for excellence."
+            title="Our Expertise & Services"
+            description="Explore our comprehensive range of corporate services, engineered for excellence and delivered with precision."
           />
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            {services.map((svc) => (
+          
+          <div className="flex flex-col gap-20 mt-16">
+            {services.map((svc, i) => (
               <motion.div
                 key={svc.title}
-                variants={cardVariants}
-                className="bg-card border border-border rounded-2xl p-8 shadow-card service-card"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className={`flex flex-col ${i % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-16 items-center`}
               >
-                <div className="flex items-start gap-5">
-                  <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
-                    style={{ background: `${svc.accent}20`, border: `1.5px solid ${svc.accent}30` }}
+                <div className="w-full lg:w-1/2 relative rounded-2xl overflow-hidden group shadow-elevated">
+                  <div className="aspect-[4/3] w-full relative">
+                    <Image 
+                      src={svc.image} 
+                      alt={svc.title} 
+                      fill 
+                      className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                      unoptimized
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                  </div>
+                  <div 
+                    className="absolute bottom-6 left-6 w-16 h-16 rounded-2xl backdrop-blur-md flex items-center justify-center shadow-lg"
+                    style={{ background: `${svc.accent}40`, border: `1px solid ${svc.accent}80` }}
                   >
-                    <svc.icon className="w-7 h-7" style={{ color: svc.accent }} />
+                    <svc.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-display font-bold text-foreground mb-2">{svc.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{svc.desc}</p>
-                    <ul className="grid grid-cols-2 gap-2 mb-5">
-                      {svc.benefits.map((b) => (
-                        <li key={b} className="text-xs text-muted-foreground flex items-center gap-1.5">
-                          <CheckCircle className="w-3.5 h-3.5 text-accent flex-shrink-0" /> {b}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href="/contact">
-                      <button className="btn-quote inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 bg-accent/10 hover:bg-accent/20 px-4 py-2 rounded-lg transition-colors">
-                        Get a Quote <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </Link>
-                  </div>
+                </div>
+                
+                <div className="w-full lg:w-1/2">
+                  <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-4" style={{ color: svc.accent, backgroundColor: `${svc.accent}15` }}>
+                    Service 0{i + 1}
+                  </span>
+                  <h3 className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">{svc.title}</h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    {svc.desc}
+                  </p>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                    {svc.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-foreground font-medium bg-card px-4 py-3 rounded-lg border border-border shadow-sm">
+                        <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: svc.accent }} />
+                        <span className="text-sm">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/contact">
+                    <Button size="lg" className="gap-2 group shadow-md" style={{ backgroundColor: svc.accent, color: '#fff' }}>
+                      Request Consultation <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Portfolio */}
+      <section className="py-24 bg-card">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            label="Previous Work"
+            title="Past Projects & Examples"
+            description="A showcase of our completed projects demonstrating our commitment to quality, scale, and modern corporate design."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            {pastProjects.map((project, i) => (
+              <motion.div
+                key={project.title}
+                custom={i}
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg"
+              >
+                <div className="aspect-[16/10] w-full relative">
+                  <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
+                </div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="inline-block px-3 py-1 bg-accent/90 text-white text-xs font-semibold tracking-wider uppercase rounded-full mb-3 shadow-sm">
+                    {project.category}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">{project.title}</h3>
+                  <p className="text-white/80 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                    {project.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

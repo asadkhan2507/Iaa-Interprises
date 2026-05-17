@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 import Header from "@/components/Header";
@@ -37,6 +37,27 @@ export const metadata: Metadata = {
     title: "IAA Enterprises | Construction & Supply Chain",
     description: "Leading construction, renovation & supply chain company in Karachi.",
   },
+  alternates: {
+    canonical: "https://iaaenterprises.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#E25A38", // the accent color hsl(8 67% 62%)
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 const jsonLd = {
